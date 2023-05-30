@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="equipment_info_view_form" model="ir.ui.view">
+            <field name="name">equipment_info</field>
+            <field name="model">equipment.info</field>
+            <field name="arch" type="xml">
+                <form string="equipment_info_form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="no_equipment"/>
+                            <field name="type_equipment"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="equipment_type_view_tree" model="ir.ui.view">
+            <field name="name">equipment_view_tree</field>
+            <field name="model">equipment.type</field>
+            <field name="arch" type="xml">
+                <tree string="equipment_type_tree">
+                    <field name="name"/>
+                </tree>
+                        </field>
+        </record>
+
+        <record id="equipment_productivity_view_form" model="ir.ui.view">
+            <field name="name">Equipment Productivity</field>
+            <field name="model">equipment.productivity</field>
+            <field name="arch" type="xml">
+                <form string="equipment_productivity_form">
+                    <sheet>
+                        <group>
+                            <field name="equ_name"/>
+                            <field name="actual_productivity"/>
+                            <field name="target_productivity"/>
+                            <field name="over_time"/>
+                            <field name="all_working_hours"/>
+                            <field name="achieved_rate"/>
+                            <field name="project_id"/>
+                            <field name="units"/>
+                            <field name="units_total"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="equipment_productivity_view_tree" model="ir.ui.view">
+            <field name="name">Equipment Productivity</field>
+            <field name="model">equipment.productivity</field>
+            <field name="arch" type="xml">
+                <tree string="_tree" editable="bottom">
+                    <field name="equ_name"/>
+                    <field name="actual_productivity"/>
+                    <field name="target_productivity"/>
+                    <field name="over_time"/>
+                    <field name="all_working_hours"/>
+                    <field name="achieved_rate"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="equipment_info_main_action" model="ir.actions.act_window">
+            <field name="name">Equipment Info</field>
+            <field name="res_model">equipment.info</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="equipment_type_main_action" model="ir.actions.act_window">
+            <field name="name">Equipment Type</field>
+            <field name="res_model">equipment.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="equipment_productivity_main_action" model="ir.actions.act_window">
+            <field name="name">Equipment Productivity</field>
+            <field name="res_model">equipment.productivity</field>
+            <field name="view_mode">form</field>
+
+        </record>
+
+
+
+
+    <menuitem name="Equipments" id="equipment1_main_menu" sequence="0" parent="construction_root_menu" />
+         <menuitem name="Equipment " id="equipment_sub_menu" parent="equipment1_main_menu" sequence="0" action="equipment_info_main_action"/>
+         <menuitem name="Equipment type " id="equipment_type_sub_menu" parent="equipment1_main_menu" sequence="0" action="equipment_type_main_action"/>
+         <menuitem name="Equipment productivity " id="equipment_productivity_type_sub_menu" parent="equipment1_main_menu" sequence="0" action="equipment_productivity_main_action"/>
+
+
+
+    </data>
+</odoo>

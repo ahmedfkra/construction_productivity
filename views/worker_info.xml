@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<record id="worker_form_view" model="ir.ui.view">
+            <field name="name">Productivity Worker</field>
+            <field name="model">project.worker</field>
+            <field name="arch" type="xml">
+                <form string="Customer">
+                    <sheet>
+                        <!--
+                        <div class="oe_title">
+                            <label for="example_title"/>
+                            <h1>
+                                <field name="example_title" placeholder="Title"/>
+                            </h1>
+                        </div>
+                        -->
+                        <group>
+                            <group>
+
+                                <field name="name"/>
+                                <field name="work_hours"/>
+                                <field name="type_worker"/>
+                                <field name="worker_equ" widget="many2many_tags" />
+
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="worker_tree_view" model="ir.ui.view">
+            <field name="name">Productivity Worker</field>
+            <field name="model">project.worker</field>
+            <field name="arch" type="xml">
+                <tree string="ModelTitle">
+                   <field name="name"/>
+                   <field name="type_worker"/>
+                    <field name="work_hours"/>
+                    <field name="worker_equ" widget="many2many_tags" />
+                </tree>
+            </field>
+        </record>
+
+
+    
+<!--Form view -->
+             <record id="equ_production_view_form" model="ir.ui.view">
+            <field name="name">Production Worker</field>
+            <field name="model">worker.production</field>
+            <field name="arch" type="xml">
+                <form string="worker_production_form">
+                    <sheet>
+                        <group>
+                           <field name="work_day"/>
+                           <field name="worker_id"/>
+                            <field name="dist"/>
+                            <field name="equ_id"/>
+                            <field name="rate_work_achieved"/>
+                            <field name="target_work"/>
+                            <field name="actual_work_prod"/>
+                            <field name="deviation"/>
+                            <field name="note"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<!--            Tree-->
+             <record id="worker_production_view_tree" model="ir.ui.view">
+                <field name="name">Production Worker Tree</field>
+                <field name="model">worker.production</field>
+                <field name="arch" type="xml">
+                <tree string="equ_production_tree">
+                     <field name="work_day"/>
+                     <field name="worker_id"/>
+                            <field name="dist"/>
+                            <field name="equ_id"/>
+                            <field name="rate_work_achieved"/>
+                            <field name="target_work"/>
+                            <field name="actual_work_prod"/>
+                            <field name="deviation"/>
+                            <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+            <record id="worker_act_window" model="ir.actions.act_window">
+                <field name="name">Productivity Worker</field>
+                <field name="res_model">project.worker</field>
+                <field name="view_mode">tree,form</field>
+            </record>
+            <record id="worker_production_act_window" model="ir.actions.act_window">
+                <field name="name">Productivity Worker</field>
+                <field name="res_model">worker.production</field>
+                <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="Workers" id="workers_main_menu" sequence="0" parent="construction_root_menu" />
+         <menuitem name="Worker" id="worker_sub_menu" parent="workers_main_menu" sequence="0" action="worker_act_window"/>
+         <menuitem name="Worker Production " id="worker_production_sub_menu" parent="workers_main_menu" sequence="0" action="worker_production_act_window"/>
+    </data>
+</odoo>

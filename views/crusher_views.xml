@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <!-- Crusher Form View -->
+        <record model="ir.ui.view" id="view_crusher_form">
+            <field name="name">crusher.form</field>
+            <field name="model">crusher.model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="location"/>
+                            <field name="working_sites"/>
+                            <field name="associated_projects"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Crusher List View -->
+        <record model="ir.ui.view" id="view_crusher_list">
+            <field name="name">crusher.list</field>
+            <field name="model">crusher.model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="location"/>
+                    <field name="working_sites"/>
+                    <field name="associated_projects"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Crusher Menu Action -->
+        <record model="ir.actions.act_window" id="action_crusher_model">
+            <field name="name">Crusher</field>
+            <field name="res_model">crusher.model</field>
+            <field name="view_mode">form,tree</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_crusher_site">
+            <field name="name">Crusher</field>
+            <field name="res_model">crusher.site</field>
+            <field name="view_mode">form,tree</field>
+        </record>
+<!-- <menuitem name="Construction" id="construction_root_menu" sequence="0"/>-->
+        <!-- Crusher Main Menu -->
+       <menuitem name="Crushers" id="crusher_main_menu" sequence="0" parent="construction_root_menu" />
+         <menuitem name="Crusher " id="Crusher_sub_menu" parent="crusher_main_menu" sequence="4" action="action_crusher_model"/>
+         <menuitem name="Crusher Site " id="Crusher_site_sub_menu" parent="crusher_main_menu" sequence="3" action="action_crusher_site"/>
+             </data>
+</odoo>

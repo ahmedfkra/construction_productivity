@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="project_info_view_form" model="ir.ui.view">
+            <field name="name">Project Info</field>
+            <field name="model">project.model</field>
+            <field name="arch" type="xml">
+                <form string="project_info_form">
+                    <sheet>
+                          <div class="oe_button_box" name="button_box">
+                              <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="compute_total_equ_unit" >
+                                     <div class="o_form_field o_stat_info">
+                                             <span class="o_stat_value">
+<!--                                      <field name="total_unit_equ" />-->
+                                                 <field name="total_unit_equ" widget="monetary"/>
+                                           </span>
+                                            <span class="o_stat_text">Equipment</span>
+                                       </div>
+                              </button>
+                              <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="compute_total_unit" >
+                                     <div class="o_form_field o_stat_info">
+                                             <span class="o_stat_value">
+<!--                                      <field name="total_unit_equ" />-->
+                                                 <field name="total_unit" widget="monetary"/>
+                                           </span>
+                                            <span class="o_stat_text">Mixer</span>
+                                       </div>
+                              </button>
+                              <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="compute_item_count" >
+                                     <div class="o_form_field o_stat_info">
+                                             <span class="o_stat_value">
+<!--                                      <field name="total_unit_equ" />-->
+                                                 <field name="item_count" widget="monetary"/>
+                                           </span>
+                                            <span class="o_stat_text">Project Items</span>
+                                       </div>
+                              </button>
+                          </div>
+                            <group>
+                                <group><field name="name"/></group>
+                                <group>
+                                    <group>
+                                    <field name="start_date"/>
+                                    <field name="End_date"/>
+                                </group>
+                                <group>
+                                    <field name="cost"/>
+                                    <field name="work_plan"/>
+                                    <field name="total_unit"/>
+<!--                                    <field name="total_unit_equ"/>-->
+<!--                                    <field name="item_count"/>-->
+
+                                </group>
+                                </group>
+                            </group>
+                                <notebook>
+                                    <page string="البنود">
+                                        <field name="items">
+                                            <tree editable="bottom">
+                                                <field name="item_number"/>
+                                                <field name="name"/>
+                                                <field name="unit_of_measurement"/>
+                                                <field name="construction_name"/>
+                                                <field name="quantity"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="الخلاطات">
+                                        <field name="production_id">
+                                             <tree>
+                                                 <field name="start_time"/>
+                                                 <field name="units"/>
+                                                 <field name="mixer_id"/>
+
+                                             </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                        </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="project_info_view_tree" model="ir.ui.view">
+            <field name="name">project_info_view_tree</field>
+            <field name="model">project.model</field>
+            <field name="arch" type="xml">
+                <tree string="project_info_tree">
+                    <field name="name"/>
+                    <field name="item_count"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- project stages tree -->
+        <record model="ir.ui.view" id="view_project_stage_tree">
+            <field name="name">project.stage.tree</field>
+            <field name="model">project.stages</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="tasks" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_project_stage_form">
+            <field name="name">project.stage.form</field>
+            <field name="model">project.stages</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                       <field name="product_id"/>
+                        <field name="name"/>
+                        <field name="item_id" widget="checkbox"/>
+                        </group>
+                        <notebook>
+                            <page string="tasks">
+                                <field name="tasks" mode = "tree" >
+                                    <tree >
+<!--                                                        <field name="equipment_ids"/>-->
+                                        <field name="name"/>
+                                    </tree>
+                                    <form string="test">
+                                        <field name="name"/>
+                                        <field name="equipment_ids" widget="many2many"/>
+                                        <field name="parent_task_id"/>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<!--        project task.tree-->
+
+        <record model="ir.ui.view" id="view_project_task_tree">
+            <field name="name">project.task.tree</field>
+            <field name="model">project.tasks</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_project_task_form">
+            <field name="name">project.task.tree</field>
+            <field name="model">project.tasks</field>
+            <field name="arch" type="xml">
+                <form>
+                      <sheet>
+                        <field name="name"/>
+                        <field name="subtasks" widget="many2many_tags"/>
+                     </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_project_task_form">
+                <field name="name">Project Task Form</field>
+                <field name="model">project.tasks</field>
+                <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="stage_id"/>
+                            <field name="parent_task_id" widget="kanban_activity"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="project_task_view_form" model="ir.ui.view">
+            <field name="name">project_task</field>
+            <field name="model">project.tasks</field>
+            <field name="arch" type="xml">
+                <form string="project_task_form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!---->
+        <record id="project_info_main_action" model="ir.actions.act_window">
+                <field name="name">Project Info</field>
+                <field name="res_model">project.model</field>
+                <field name="view_mode">tree,kanban,form</field>
+        </record>
+    <!-- تعريف إجراء العرض المراحل -->
+       <record model="ir.actions.act_window" id="action_project_stage">
+                <field name="name">Project Stage</field>
+                <field name="res_model">project.stages</field>
+                <field name="view_mode">tree,kanban,form</field>
+      </record>
+<!--
+         - تعريف إجراء العرض للمهام -->
+        <record model="ir.actions.act_window" id="action_project_task">
+            <field name="name">Project Tasks</field>
+            <field name="res_model">project.tasks</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <menuitem name="Construction" id="construction_root_menu" sequence="0"/>
+        <menuitem name="Projects" id="construction_main_menu" sequence="0" parent="construction_root_menu" />
+         <menuitem name="project " id="construction_sub_menu" parent="construction_main_menu" sequence="0" action="project_info_main_action"/>
+         <menuitem name="project stage " id="project_stage_sub_menu" parent="construction_main_menu" sequence="0" action="action_project_stage"/>
+         <menuitem name="project task " id="project_task_sub_menu" parent="construction_main_menu" sequence="0" action="action_project_task"/>
+
+
+    </data>
+</odoo>
