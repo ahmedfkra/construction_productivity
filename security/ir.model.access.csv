@@ -9,11 +9,16 @@ access_equipment_type,access.equipment.type,model_equipment_type,base.group_user
 access_equipment_productivity,access.equipment.productivity,model_equipment_productivity,base.group_user,1,1,1,1
 access_crusher_model,access.crusher.model,model_crusher_model,base.group_user,1,1,1,1
 access_crusher_site,access.crusher.site,model_crusher_site,base.group_user,1,1,1,1
+access_crusher_location,access.crusher.location,model_crusher_location,base.group_user,1,1,1,1
+access_crusher_product,access.crusher.product,model_crusher_product,base.group_user,1,1,1,1
+access_crusher_production,access.crusher.production,model_crusher_production,base.group_user,1,1,1,1
 access_mixer_model,access.mixer.model,model_mixer_model,base.group_user,1,1,1,1
 access_mixer_type,access.mixer.type,model_mixer_type,base.group_user,1,1,1,1
 access_mixer_category,access.mixer.category,model_mixer_category,base.group_user,1,1,1,1
 access_mixer_supplier,access.mixer.supplier,model_mixer_supplier,base.group_user,1,1,1,1
+access_mixer_engineer,access.mixer.engineer,model_mixer_engineer,base.group_user,1,1,1,1
 access_mixer_production,access.mixer.production,model_mixer_production,base.group_user,1,1,1,1
+access_mixer_maintenance_technician,access.mixer.maintenance.technician,model_mixer_maintenance_technician,base.group_user,1,1,1,1
 access_project_worker,access.project.worker,model_project_worker,base.group_user,1,1,1,1
 access_worker_production,access.worker.production,model_worker_production,base.group_user,1,1,1,1
 

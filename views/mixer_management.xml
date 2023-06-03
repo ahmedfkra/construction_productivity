@@ -3,11 +3,10 @@
     <data>
 
         <record id="mixer_info_view_form" model="ir.ui.view">
-            <field name="name">mixer_info_view_form</field>
+            <field name="name">Mixer Info</field>
             <field name="model">mixer.model</field>
             <field name="arch" type="xml">
-                <form string="mixer_info_form">
-
+                <form string="Mixer Info">
                     <sheet>
                         <group>
                             <field name="name"/>
@@ -19,11 +18,9 @@
                             <field name="capacity"/>
                             <field name="category_id"/>
                             <field name="supplier_id"/>
-                            <field name="last_maintence"/>
+                            <field name="last_maintenance"/>
                             <field name="purchase_date"/>
                             <field name="manufacturer"/>
-
-
                         </group>
                     </sheet>
                 </form>
@@ -31,10 +28,10 @@
         </record>
 
         <record id="mixer_model_view_tree" model="ir.ui.view">
-            <field name="name">mixer_model_view_tree</field>
+            <field name="name">Mixer Info Lists</field>
             <field name="model">mixer.model</field>
             <field name="arch" type="xml">
-                <tree string="mixer_model_tree">
+                <tree string="Mixer Info List">
                     <field name="name"/>
                     <field name="category_id"/>
                 </tree>
@@ -109,12 +106,8 @@
             <field name="name">Mixer Production</field>
             <field name="res_model">mixer.production</field>
             <field name="view_mode">tree,form</field>
-<!--            <field name="help" type="html">-->
-<!--                <p class="o_view_nocontent_smiling_face">-->
-<!--                    Register  Mixer Production.-->
-<!--                </p>-->
-<!--            </field>-->
         </record>
+
         <record id="mixer_category_action" model="ir.actions.act_window">
             <field name="name">Mixer Category</field>
             <field name="res_model">mixer.category</field>

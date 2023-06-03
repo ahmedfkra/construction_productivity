@@ -9,7 +9,7 @@ class MixerManagement(models.Model):
     no_mixer = fields.Char(string='Mixer Number')
     type = fields.Many2one('mixer.type', string='Type')
     status = fields.Selection([('operation', 'Operation'), ('manitence', 'Manitence'), ('stop', 'Stop')])
-    last_maintence = fields.Date(string='Last Manitence')
+    last_maintenance = fields.Date(string='Last Maintenance')
     purchase_date = fields.Date(string='Purchase Date')
     hours_work = fields.Integer(string='Hours Date')
     production_ids = fields.One2many('mixer.production', 'mixer_id', string='الإنتاجية')
@@ -17,7 +17,7 @@ class MixerManagement(models.Model):
     manufacturer = fields.Char(string='الشركة المصنعة')
     location = fields.Char(string='الموقع')
     category_id = fields.Many2one('mixer.category', string='التصنيف')
-    supplier_id = fields.Many2one('mixer.supplier')
+    supplier_id = fields.Many2one('mixer.supplier',string='Supplier')
 
 
 
@@ -35,10 +35,10 @@ class Production(models.Model):
     end_time = fields.Date(string='تاريخ الانتهاء')
     is_completed = fields.Boolean(string='تم الانتهاء')
     projects_id = fields.Many2one('project.model', string='Project')
-    # duration = fields.Float(string='المدة', compute='_compute_duration')
+    duration = fields.Float(string='المدة', compute='compute_duration')
 
     @api.depends('start_time', 'end_time')
-    def _compute_duration(self):
+    def compute_duration(self):
         for production in self:
             if production.start_time and production.end_time:
                 duration = (production.end_time - production.start_time).total_seconds() / 3600
