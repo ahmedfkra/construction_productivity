@@ -220,7 +220,7 @@
 
 
 
-        <menuitem name="Construction" id="construction_root_menu" sequence="0"/>
+        <menuitem name="Construction" id="construction_root_menu" sequence="0" />
         <menuitem name="Projects" id="construction_main_menu" sequence="0" parent="construction_root_menu" />
          <menuitem name="project " id="construction_sub_menu" parent="construction_main_menu" sequence="0" action="project_info_main_action"/>
          <menuitem name="project stage " id="project_stage_sub_menu" parent="construction_main_menu" sequence="0" action="action_project_stage"/>

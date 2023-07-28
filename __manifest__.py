@@ -30,6 +30,10 @@
         'views/crusher_views.xml',
         'views/mixer_management.xml',
         'views/worker_info.xml',
+        'report/crusher.xml',
+        'report/crusher_template.xml',
+        # 'views/report.xml',
+
 
     ],
     # only loaded in demonstration mode

@@ -12,8 +12,20 @@
                             <field name="location"/>
 <!--                            <field name="working_sites"/>-->
                             <field name="work_hours"/>
+                            <field name="capacity"/>
                         </group>
+                        <notebook>
+                           <page string = 'Product'>
+                                <field name="product">
+                                <tree>
+                                    <field name="name"/>
+<!--                                    <field name="qu_product"/>-->
+                                </tree>
+                            </field>
+                           </page>
+                        </notebook>
                     </sheet>
+
                 </form>
             </field>
         </record>
@@ -31,12 +43,34 @@
                 </tree>
             </field>
         </record>
-<record id="crusher_production_view_form" model="ir.ui.view">
-    <field name="name">Crusher Production</field>
-    <field name="model">crusher.production</field>
-    <field name="arch" type="xml">
-        <form string="crusher_production_form">
-            <sheet>
+        <!-- crusher Production Form-->
+        <record id="crusher_production_view_form" model="ir.ui.view">
+             <field name="name">Crusher Production</field>
+            <field name="model">crusher.production</field>
+            <field name="arch" type="xml">
+                <form string="crusher_production_form">
+                 <sheet>
+                 <div class="oe_button_box" name="button_box">
+<!--                     production-->
+                              <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="compute_crusher_production" >
+                                     <div class="o_form_field o_stat_info">
+                                             <span class="o_stat_value">
+                                      <field name="crusher_production" />
+                                           </span>
+                                            <span class="o_stat_text">productivity Rate</span>
+                                       </div>
+                              </button>
+<!--                     crusher_production-->
+                              <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="compute_crusher_production" >
+                                     <div class="o_form_field o_stat_info">
+                                             <span class="o_stat_value">
+                                      <field name="crusher_production" />
+<!--                                                 <field name="crusher_production" widget="monetary"/>-->
+                                           </span>
+                                            <span class="o_stat_text">Production Crusher</span>
+                                       </div>
+                              </button>
+                 </div>
                 <group>
                     <field name="name"/>
                     <field name="location"/>
@@ -60,8 +94,25 @@
                 </notebook>
             </sheet>
         </form>
-    </field>
-</record>
+         </field>
+        </record>
+<!--    crusher production tree     -->
+        <record id="cursher_production_view_tree" model="ir.ui.view">
+            <field name="name">cursher_production_view_tree</field>
+            <field name="model">crusher.production</field>
+            <field name="arch" type="xml">
+                <tree string="cursher_production_tree">
+                    <field name="name"/>
+                    <field name="location"/>
+                    <field name="work_hours"/>
+                    <field name="crusher_production"/>
+                    <field name="production_rate"/>
+                    <field name="production_efficiency"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--     crusher product form-->
         <record id="crusher_product_view_form" model="ir.ui.view">
             <field name="name">crusher_product_view_form</field>
             <field name="model">crusher.product</field>
@@ -75,6 +126,7 @@
                 </form>
             </field>
         </record>
+        <!--        crusher product tree-->
         <record id="crusher_product_view_tree" model="ir.ui.view">
             <field name="name">crusher_product_view_tree</field>
             <field name="model">crusher.product</field>
@@ -88,29 +140,29 @@
         <record model="ir.actions.act_window" id="action_crusher_model">
             <field name="name">Crusher</field>
             <field name="res_model">crusher.model</field>
-            <field name="view_mode">form,tree</field>
+            <field name="view_mode">tree,form</field>
         </record>
         <record model="ir.actions.act_window" id="action_crusher_site">
             <field name="name">Crusher</field>
             <field name="res_model">crusher.site</field>
-            <field name="view_mode">form,tree</field>
+            <field name="view_mode">tree,form</field>
         </record>
         <record model="ir.actions.act_window" id="action_crusher_production">
             <field name="name">Crusher Production</field>
             <field name="res_model">crusher.production</field>
-            <field name="view_mode">form,tree</field>
+            <field name="view_mode">tree,form</field>
         </record>
         <record model="ir.actions.act_window" id="action_crusher_product">
             <field name="name">Crusher Product</field>
             <field name="res_model">crusher.product</field>
-            <field name="view_mode">form,tree</field>
+            <field name="view_mode">tree,form</field>
         </record>
 <!-- <menuitem name="Construction" id="construction_root_menu" sequence="0"/>-->
         <!-- Crusher Main Menu -->
-       <menuitem name="Crushers" id="crusher_main_menu" sequence="0" parent="construction_root_menu" />
+       <menuitem name="Crushers" id="crusher_main_menu" sequence="0" parent="construction_root_menu"  />
          <menuitem name="Crusher " id="Crusher_sub_menu" parent="crusher_main_menu" sequence="1" action="action_crusher_model"/>
          <menuitem name="Crusher Site " id="Crusher_site_sub_menu" parent="crusher_main_menu" sequence="3" action="action_crusher_site"/>
-        <menuitem name="Crusher Production " id="Crusher_production_sub_menu" parent="crusher_main_menu" sequence="4" action="action_crusher_production"/>
-        <menuitem name="Crusher Product " id="Crusher_product_sub_menu" parent="crusher_main_menu" sequence="5" action="action_crusher_product"/>
+        <menuitem name="Crusher Product " id="Crusher_product_sub_menu" parent="crusher_main_menu" sequence="4" action="action_crusher_product"/>
+        <menuitem name="Crusher Production " id="Crusher_production_sub_menu" parent="crusher_main_menu" sequence="5" action="action_crusher_production"/>
              </data>
 </odoo>

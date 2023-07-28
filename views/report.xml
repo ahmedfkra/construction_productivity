@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="action_student_id_card" model="ir.actions.report">
+               <field name="name">Production Report</field>
+               <field name="model">crusher.production</field>
+               <field name="report_type">qweb-pdf</field>
+               <field name="report_name">construction_productivity.report_production</field>
+               <field name="report_file">construction_productivity.report_production</field>
+               <field name="binding_model_id" ref="model_crusher_production"/>
+        </record>
+
+            <template id="report_production" name="style">
+
+                <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="o">
+                        <t t-call="web.external_layout">
+                            <div class="page" >
+                                <h2>إنتاجية الكسارة</h2>
+                                <h5> رقم الإنتاجية :<span t-field="o.name"/></h5>
+                                <h5>موقع الكسارة :<span t-field="o.location"/> </h5>
+                                <h5>عدد ساعات الكسارة:<span t-field="o.work_hours"/> </h5>
+                                 <div  class="content table-responsive">
+                                <table class="table table-striped" border="1" >
+                                    <thead>
+                                        <tr style="background-color: #0000ff; color: #ffffff;">
+<!--                                            <th >رقم الإنتاج</th>-->
+<!--                                            <th>مكان الكسارة</th>-->
+<!--                                            <th>عدد الساعات العمل</th>-->
+                                            <th>الكمية المستهدفة</th>
+                                            <th>الكمية الفعلية</th>
+                                            <th>إنتاجية الكسارة</th>
+                                            <th>معدل إنتاجية </th>
+                                            <th>نسبة الإنتاجية</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+<!--                                            <td><span t-field="o.name"/></td>-->
+<!--                                            <td><span t-field="o.location"/></td>-->
+<!--                                            <td><span t-field="o.work_hours"/></td>-->
+                                            <td><span t-field="o.target_productivity"/></td>
+                                            <td><span t-field="o.actual_productivity"/></td>
+                                            <td><span t-field="o.crusher_production"/></td>
+                                            <td><span t-field="o.production_rate"/></td>
+                                            <td><span t-field="o.production_efficiency"/></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </template>
+    </data>
+</odoo>

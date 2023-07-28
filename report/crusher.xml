@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+       <record id="id_crusher_report" model="ir.actions.report">
+           <field name="name">Crusher Report</field>
+           <field name="model">crusher.production</field>
+           <field name="report_type">qweb-pdf</field>
+           <field name="report_name">construction_productivity.report_crusher</field>
+           <field name="report_file">construction_productivity.report_crusher</field>
+           <field name="binding_model_id" ref="model_crusher_production"/>
+           <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
